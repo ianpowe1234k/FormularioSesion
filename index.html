@@ -1,0 +1,297 @@
+<!--
+  ======================================================================
+  INSTITUCIÓN: CBTis 166 Pablo Torres Burgos
+  ----------------------------------------------------------------------
+  * Estudiante: Lopez Reyes Ian Uriel
+  * Grupo: 3B PRO VESP  
+  * Actividad: Práctica Temática - Registro de Expedientes Creepypasta
+  * Fecha de entrega: 21 de octubre de 2026
+  ----------------------------------------------------------------------
+  * Descripción técnica:
+    - Estructura modular (HTML5, CSS3 y JavaScript) con diseño responsivo (CSS Grid/Flexbox).
+    - Uso completo de etiquetas semánticas y variantes de inputs para formularios 
+    (<form>, <fieldset>, <legend>, <input>, <select>, etc.).
+    - Interactividad con JavaScript (envío, validación, asistente y vista previa 
+    dinámica mediante botones radio).
+  ====================================================================== -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archivos Clasificados - Registro de Expedientes</title>
+    <!-- Vinculación de la hoja de estilos externa -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Etiqueta semántica <header>: Cabecera principal del sitio -->
+    <header>
+        <div class="header-content">
+            <h1>Enciclopedia de Creepypastas</h1>
+            <p>Sistema de Registro y Reporte de Anomalías Paranormales</p>
+        </div>
+    </header>
+
+    <!-- Etiqueta semántica <nav>: Barra de navegación principal -->
+    <nav>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- Etiqueta semántica <main>: Contenedor principal de contenido -->
+    <main id="inicio">
+        
+        <section class="form-section">
+            <h2 class="section-title">Formulario de Reporte y Testimonio</h2>
+            <p class="section-desc">Complete el siguiente formulario oficial para registrar un encuentro con entidades o sucesos inexplicables en la red.</p>
+      
+            <!-- 
+              ==================================================
+              ETIQUETA <form>: Contenedor raíz del formulario 
+              Atributos:
+              - action: Ruta o script del servidor que procesa los datos.
+              - method: Método HTTP (POST para envío seguro).
+              - enctype: Permite adjuntar archivos multimedia.
+              ================================================== 
+            -->
+            <form id="form-reserva" action="/procesar-reserva" method="POST" enctype="multipart/form-data">
+
+                <!-- 
+                  ETIQUETA <fieldset>: Agrupa visual y lógicamente un bloque de campos.
+                  ETIQUETA <legend>: Título descriptivo para el fieldset.
+                  ETIQUETA <label>: Etiqueta de texto accesible conectada mediante el atributo 'for'.
+                  ETIQUETA <input>: Control interactivo de entrada cuyo comportamiento cambia con el 'type'.
+                -->
+                <fieldset>
+                    <legend>1. Información del Testigó / Investigador</legend>
+                    <div class="input-group">
+                        <label for="nombre-huesped">Nombre o Seudónimo:</label>
+                        <!-- type="text": Campo de texto plano. 'required' obliga a llenarlo -->
+                        <input type="text" id="nombre-huesped" name="nombre_huesped" 
+                         placeholder="Ej. Agente Mulder / Anónimo" required>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>2. Detalles del Suceso y Contacto</legend>
+
+                    <div class="input-group">
+                        <label for="in-email">Correo Electrónico:</label>
+                        <!-- type="email": Valida automáticamente formato de correo con '@' -->
+                        <input type="email" id="in-email" name="correo" placeholder="investigador@cbtis166.edu.mx" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="in-password">Clave Secreta de Acceso:</label>
+                        <!-- type="password": Oculta los caracteres con asteriscos o puntos -->
+                        <input type="password" id="in-password" name="password" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="in-tel">Teléfono de Emergencia Paranormal:</label>
+                        <!-- type="tel": Optimiza el teclado numérico en dispositivos móviles -->
+                        <input type="tel" id="in-tel" name="telefono" placeholder="734-000-0000">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="in-url">Enlace a Pruebas o Foro (Opcional):</label>
+                        <!-- type="url": Valida que la entrada comience con un protocolo web válido -->
+                        <input type="url" id="in-url" name="redes" placeholder="https://reddit.com/r/creepypasta">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="in-search">Buscar archivos o entidades:</label>
+                        <!-- type="search": Campo optimizado para búsquedas -->
+                        <input type="search" id="in-search" name="busqueda_tour" placeholder="Ej. Slender Man, Jeff...">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="in-number">Número de testigos involucrados:</label>
+                        <!-- type="number": Control numérico con límites min, max e incremento step -->
+                        <input type="number" id="in-number" name="adultos" min="1" max="10" value="1">
+                    </div>
+
+                    <div class="input-group checkbox-wrapper">
+                        <!-- type="checkbox": Casilla de verificación para selección múltiple -->
+                        <input type="checkbox" id="check1" name="transporte" value="si">
+                        <label for="check1">Incluir protocolo de protección y rastreo de IP</label>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Nivel de Amenaza:</label><br>
+                        <!-- type="radio": Permite seleccionar una sola opción dentro del mismo grupo -->
+                        <input type="radio" id="r1" name="habitacion" value="sencilla"> <label for="r1">Bajo (Observación)</label> &nbsp;&nbsp;
+                        <input type="radio" id="r2" name="habitacion" value="suite" checked> <label for="r2">Crítico (Acoso Activo)</label>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Evidencia Visual del Encuentro:</label><br>
+                        <input type="radio" id="r1" name="habitacion" value="sencilla"> <label for="r1">Fotografía borrosa</label> &nbsp;&nbsp;
+                        <input type="radio" id="r2" name="habitacion" value="suite" checked> <label for="r2">Video corrupto (Glitch)</label>
+                        
+                        <!-- Contenedor visual para mostrar la imagen correspondiente -->
+                        <div class="preview-habitacion" style="margin-top: 15px;">
+                            <img id="imagen-habitacion" src="https://images.wondershare.com/recoverit/using-ffmpeg-to-repair-6.jpg" alt="Vista previa de anomalía" style="width: 100%; max-width: 400px; height: 220px; object-fit: cover; border-radius: 8px; border: 1px solid #2d3748;">
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="in-date">Fecha del avistamiento:</label>
+                        <!-- type="date": Despliega un calendario interactivo nativo -->
+                        <input type="date" id="in-date" name="fecha_llegada">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="in-time">Hora exacta del suceso:</label>
+                        <!-- type="time": Selector interactivo de hora -->
+                        <input type="time" id="in-time" name="hora_llegada">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="in-datetime">Fecha y hora de la última señal:</label>
+                        <!-- type="datetime-local": Selector combinado de fecha y hora local -->
+                        <input type="datetime-local" id="in-datetime" name="vuelo_llegada">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="in-month">Mes con mayor actividad anómala:</label>
+                        <!-- type="month": Selector exclusivo de mes y año -->
+                        <input type="month" id="in-month" name="mes_visita">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="in-week">Semana de mayor peligro:</label>
+                        <!-- type="week": Selector de semana del año -->
+                        <input type="week" id="in-week" name="semana_vacaciones">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="in-color">Color de alerta de la entidad:</label><br>
+                        <!-- type="color": Paleta de selección de colores en formato hexadecimal -->
+                        <input type="color" id="in-color" name="color_equipaje" value="#dc2626" style="width: 100px; height: 40px; padding: 2px;">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="in-range">Nivel de terror experimentado (1 al 10):</label>
+                        <!-- type="range": Barra deslizante (slider) numérica -->
+                        <input type="range" id="in-range" name="firmeza_colchon" min="1" max="10" value="9">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="in-file">Subir archivo multimedia o captura de pantalla:</label>
+                        <!-- type="file": Permite la subida de archivos locales -->
+                        <input type="file" id="in-file" name="identificacion">
+                    </div>
+
+                    <!-- type="hidden": Campo oculto para enviar datos técnicos al servidor sin que el usuario los modifique -->
+                    <input type="hidden" name="reserva_id" value="EXP-CREEPY-2026-004">
+
+                    <div class="input-group">
+                        <label>Sello de autenticidad del expediente:</label><br>
+                        <!-- type="image": Botón de envío representado por una imagen gráfica -->
+                        <input type="image" src="https://picsum.photos/120/35" alt="Sello clasificado" style="width: 120px; height: 35px;">
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>3. Bitácora y Observaciones Detalladas</legend>
+                    <div class="input-group">
+                        <label for="mi-textarea">Describa detalladamente los síntomas, ruidos o apariciones:</label>
+                        <!-- ETIQUETA <textarea>: Caja de edición de texto multilínea -->
+                        <textarea id="mi-textarea" name="observaciones" rows="4" placeholder="Escribe aquí los eventos extraños..."></textarea>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>4. Clasificación de Entidades y Archivos</legend>
+
+                    <div class="input-group">
+                        <label for="mi-select">Seleccione la entidad principal involucrada:</label>
+                        <!-- ETIQUETA <select>: Menú desplegable de opciones -->
+                        <select id="mi-select" name="paquete">
+                            <!-- ETIQUETA <optgroup>: Agrupa opciones relacionadas dentro del select -->
+                            <optgroup label="Entidades del Bosque y Sombra">
+                                <!-- ETIQUETA <option>: Opción individual del menú -->
+                                <option value="slender">Slender Man (El Ente Sin Rostro)</option>
+                                <option value="jack">Eyeless Jack (El Acechador Nocturno)</option>
+                            </optgroup>
+                            <optgroup label="Entidades Digitales y Urbanas">
+                                <option value="jeff" selected>Jeff the Killer (Go to sleep)</option>
+                                <option value="ben">Ben Drowned (Cartucho Maldito)</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="input-datalist">Sugerencias de investigación:</label>
+                        <!-- ETIQUETA <input> asociada a un <datalist> mediante el atributo 'list' -->
+                        <input type="text" id="input-datalist" name="excursion" list="lista-tours" placeholder="Empieza a escribir...">
+                        <!-- ETIQUETA <datalist>: Proporciona opciones de autocompletado predictivo -->
+                        <datalist id="lista-tours">
+                            <option value="Revisar bitácoras de Cleverbot">
+                            <option value="Analizar frecuencias de radio estáticas">
+                            <option value="Inspeccionar archivos de videojuegos antiguos">
+                            <option value="Verificar reportes en foros de Deep Web">
+                        </datalist>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>5. Estado de Alerta de la Red</legend>
+
+                    <div class="input-group">
+                        <label>Nivel de corrupción del sistema:</label>
+                        <!-- ETIQUETA <progress>: Muestra la barra de progreso de una tarea o capacidad -->
+                        <progress value="92" max="100" style="width: 100%; height: 20px;">92%</progress>
+                    </div><br>
+
+                    <div class="input-group">
+                        <label>Índice de peligrosidad global:</label>
+                        <!-- ETIQUETA <meter>: Mide un valor escalar dentro de un rango conocido -->
+                        <meter value="0.95" min="0" low="0.4" high="0.7" optimum="0.95" style="width: 100%; height: 20px;">95%</meter>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>6. Confirmación de Envío de Expediente</legend>
+
+                    <div class="input-group">
+                        <p style="margin-bottom: 8px;"><strong>Acciones de Seguridad:</strong></p>
+                        <!-- ETIQUETA <button>: Botones de acción semánticos avanzados -->
+                        <button type="submit" id="btn-enviar" class="btn btn-submit">Enviar Expediente</button>
+                        <button type="reset" id="btn-limpiar" class="btn btn-reset">Borrar Datos</button>
+                        <button type="button" id="btn-asistente" class="btn btn-action">Consultar Archivos</button>
+                    </div>
+                </fieldset>
+
+            </form>
+        </section>
+
+        <!-- Etiqueta semántica <aside>: Barra lateral de información secundaria -->
+        <aside>
+            <h3>Centro de Vigilancia</h3>
+            <p><strong>CBTis 166:</strong></p>
+            <p>Departamento de Sistemas</p>
+            <p><strong>Línea Segura:</strong></p>
+            <p>+52 (734) 000-0000</p>
+            <br>
+            <p>Mantenga la calma. Si escucha ruidos extraños cerca de su dispositivo, desconecte la red inmediatamente.</p>
+        </aside>
+    </main>
+
+    <!-- Etiqueta semántica <footer>: Pie de página con información de contacto y <address> -->
+    <footer id="contacto">
+        <p>&copy; 2026 Enciclopedia de Creepypastas. Todos los derechos reservados.</p>
+        <address>
+            ¿Evidencia irrefutable? Envíela a <a href="mailto:expedientes@cbtis166.edu.mx">expedientes@cbtis166.edu.mx</a>
+        </address>
+    </footer>
+
+    <!-- Vinculación del script de interactividad -->
+    <script src="script.js"></script>
+</body>
+</html>

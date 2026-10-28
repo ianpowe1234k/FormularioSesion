@@ -1,0 +1,277 @@
+/* ======================================================================
+   RESETEO GLOBAL: TEMA OSCURO - EXPEDIENTES CREEPYPASTA
+   ====================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0b0c10; /* Fondo negro carbón profundo */
+    color: #e2e8f0;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Cabecera con ambiente oscuro y degradado siniestro */
+header {
+    background: linear-gradient(135deg, rgba(7, 8, 12, 0.85), rgba(153, 27, 27, 0.7)), 
+                url('https://assets.dragoart.com/images/21489_501/how-to-draw-the-creepypasta-logo_5e4cd9656dc429.56551233_106986_5_4.png');
+    background-size: cover;
+    background-position: center;
+    color: #ffffff;
+    padding: 3.5rem 1rem;
+    text-align: center;
+    border-bottom: 2px solid #dc2626;
+}
+
+.header-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+    color: #f8fafc;
+}
+
+header p {
+    font-size: 1.2rem;
+    opacity: 0.95;
+    color: #94a3b8;
+}
+
+/* Barra de navegación fija (sticky) en tonos oscuros y rojos */
+nav {
+    background-color: #12141d;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid #1f293d;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+nav ul li a {
+    display: block;
+    color: #cbd5e1;
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #1a0b1c;
+    color: #ef4444;
+}
+
+/* Estructura general de columnas con CSS Grid */
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 2rem;
+    flex: 1;
+}
+
+@media (max-width: 900px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+}
+
+.form-section {
+    background-color: #12141d;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    border: 1px solid #1f293d;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    color: #f8fafc;
+    margin-bottom: 0.5rem;
+    border-bottom: 3px solid #dc2626;
+    padding-bottom: 0.5rem;
+}
+
+.section-desc {
+    color: #94a3b8;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+}
+
+/* Estilos de los contenedores fieldset y sus títulos legend oscuros */
+fieldset {
+    margin-bottom: 25px;
+    padding: 20px;
+    border: 2px solid #2d3748;
+    border-radius: 8px;
+    background-color: #0b0c10;
+}
+
+legend {
+    font-weight: bold;
+    background-color: #dc2626;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(220, 38, 38, 0.4);
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #94a3b8;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Estilos unificados para todos los controles del formulario */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+input[type="tel"],
+input[type="url"],
+input[type="search"],
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="color"],
+input[type="file"],
+select,
+textarea {
+    width: 100%;
+    max-width: 450px;
+    padding: 10px 12px;
+    margin-top: 4px;
+    border: 1px solid #2d3748;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: #0b0c10;
+    color: #e2e8f0;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #dc2626;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2);
+}
+
+input[type="checkbox"], input[type="radio"] {
+    width: auto;
+    margin-right: 6px;
+    cursor: pointer;
+}
+
+/* Estilos de botones de acción */
+.btn {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-top: 5px;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-submit {
+    background-color: #dc2626;
+    color: white;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
+}
+.btn-submit:hover {
+    background-color: #991b1b;
+}
+
+.btn-reset {
+    background-color: #475569;
+    color: white;
+}
+.btn-reset:hover {
+    background-color: #334155;
+}
+
+.btn-action {
+    background-color: #1e3a8a;
+    color: white;
+}
+.btn-action:hover {
+    background-color: #172554;
+}
+
+/* Barra lateral y pie de página oscuros */
+aside {
+    background-color: #12141d;
+    color: #e2e8f0;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    height: fit-content;
+    border: 1px solid #1f293d;
+}
+
+aside h3 {
+    color: #f8fafc;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    border-bottom: 2px solid #2d3748;
+    padding-bottom: 0.5rem;
+}
+
+aside p {
+    color: #94a3b8;
+}
+
+footer {
+    background-color: #050507;
+    color: #94a3b8;
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-top: auto;
+    border-top: 1px solid #1f293d;
+}
+
+footer address {
+    font-style: normal;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+footer address a {
+    color: #fca5a5;
+    text-decoration: none;
+}
